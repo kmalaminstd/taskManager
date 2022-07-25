@@ -1,0 +1,129 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier Prime', monospace;
+}
+
+main{
+    width: 960px;
+    margin: 20px auto;
+}
+
+header h1{
+    font-family: 'Courier Prime', monospace;
+    font-weight: 200;
+    text-align: center;
+    margin: 20px 0;
+    font-size: 45px;
+}
+
+header #multicolor{
+    font-family: 'Lobster', cursive;
+    background-image: linear-gradient(to left, rgba(238, 20, 238, 0.445), rgba(76, 0, 130, 0.87), green, rgba(0, 0, 255, 0.89), rgba(201, 132, 3, 0.842), red);
+    background-clip: text;
+    -moz-background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: bold;
+}
+
+.form-area{
+    width: 100%;
+}
+
+.form-group{
+    margin: 35px 0;
+}
+
+.form-group label{
+    font-size: 19px;
+    display: inline-block;
+}
+
+.form-group .form-input{
+    display: inline-block;
+    width: 50%;
+    margin: 0 0 0 1rem;
+}
+
+.form-input input{
+    outline: none;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    width: 100%;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    padding: 5px 10px;
+}
+
+#taskDate{
+    width: 100%;
+}
+
+#taskDate .form-input:not(.radio-group){
+    width: 30%;
+}
+
+#priority{
+    border: 1px solid lightblue;
+}
+
+#priority .form-input input{
+    width: 10%;
+}
+
+#taskSubmitBtn{
+    background-color: lightgreen;
+    outline: none;
+    border: 1px solid lightcoral;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 3px 10px;
+}
+
+.data-table{
+    width: 100%;
+    margin: 150px 0 0 0;
+}
+
+.data-table .dataSummarize{
+    width: 100%;
+}
+
+.dataSummarize p{
+    width: 25%;
+    float: left;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table tr{
+    border-top: 1px solid lightblue;
+    border-bottom: 1px solid lightblue;
+}
+
+table td, table th {
+    padding: 15px 5px;
+}
+
+table tbody tr:nth-child(even){
+    background-color: lightgray;
+}
+
+#editBtn, #completeBtn, #deleteBtn{
+    cursor: pointer;
+}
+ 
+.taskrangefield{
+    width: 60px !important;
+}
+
+#taskRange{
+    width: 400px !important;
+}

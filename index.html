@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Lobster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Task Manager</title>
+</head>
+<body>
+
+    <main>
+        <header>
+            <h1><span id="multicolor">Task</span> Manager</h1>
+        </header>
+    
+        <div class="form-area">
+            <form>
+    
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <div class="form-input">
+                        <input type="text" id="taskTitle">
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <label for="sub title">Sub Title</label>
+                    <div class="form-input">
+                        <input type="text" id="subTitle">
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <label for="assign">Assigned To</label>
+                    <div class="form-input">
+                        <input type="text" id="assign">
+                    </div>
+                </div>
+    
+                <div class="form-group" id="taskDate">
+                    <label for="startdate">Start</label>
+                    <div class="form-input">
+                        <input type="date" id="startDate">
+                    </div>
+    
+                    <label for="enddate">End</label>
+                    <div class="form-input">
+                        <input type="date" id="endDate">
+                    </div>
+                </div>
+    
+                <div class="form-group" id="priority">
+                    <label for="priority">Priority : </label>
+                    <div class="form-input">
+    
+                    
+                        <div class="radioGroup" id="priorityGroup">
+                            <label for="low">Low</label>
+                            <input type="checkbox" value="low" id="lowPriority">
+                        
+                            <label for="low">Medium</label>
+                            <input type="checkbox" value="medium" id="mediumPriority">
+                       
+                            <label for="low">High</label>
+                            <input type="checkbox" value="high" id="highPriority">
+                        </div>
+    
+                    </div>
+                </div>
+    
+                <div class="form-group" id="priority">
+                    <label for="Status">Status : </label>
+                    <div class="form-input">
+    
+                        <div class="radioGroup" id="statusGroup">
+                            
+                            <input type="checkbox" value="new" id="newTask">
+                            <label for="new">New</label>
+          
+                            <input type="checkbox" value="progress" id="progressTask">
+                            <label for="low">In Progress</label>
+                                                   
+                            <input type="checkbox" value="completed" id="completeTask">
+                            <label for="completed">Completed</label>
+                        </div>
+                        
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <label for="range">Completed In Parcentage</label>
+                    <div class="form-input">
+                        <input type="range" min="1" max="100" id="taskRange">
+                        <input type="number" min="1" man="100" class="taskrangefield">
+                    </div>
+                </div>
+    
+                <button type="submit" id="taskSubmitBtn">Add Task</button>
+            </form>
+        </div>
+
+
+        <div class="data-table">
+            <div class="dataSummarize">
+                <p>Total : 1</p>
+                <p>New : 1</p>
+                <p>In progress : 1</p>
+                <p>Completed : 1</p>
+            </div>
+            <table>
+                
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                            <th>Due Date</th>
+                            <th>Assigned To</th>
+                            <th>Completed(%)</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+
+                    </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="./assets/js/main.js"></script>
+
+</body>
+</html>
