@@ -75,7 +75,7 @@ header #multicolor{
     width: 10%;
 }
 
-#taskSubmitBtn{
+#taskSubmitBtn, #updateBtnElm{
     background-color: lightgreen;
     outline: none;
     border: 1px solid lightcoral;
@@ -116,7 +116,11 @@ table tbody tr:nth-child(even){
     background-color: lightgray;
 }
 
-#editBtn, #completeBtn, #deleteBtn{
+table tbody td{
+    text-align: center;
+}
+
+button{
     cursor: pointer;
 }
  
