@@ -1,4 +1,6 @@
 let taskArr = []
+
+// sending data to localStorage
 const localStorageInit = {
     
     sendTaskLocalStorage(taskObj){
@@ -20,27 +22,19 @@ const localStorageInit = {
 }
 
 const all = {
+    // selecting all dom property
     allSelectors(){
         const taskTitle = document.querySelector('#taskTitle')
         const taskSubTitle = document.querySelector('#subTitle')
         const assignedTo = document.querySelector('#assign')
         const taskStartDate = document.querySelector('#startDate')
         const taskEndDate = document.querySelector('#endDate')
-        // const lowPriorityElm = document.querySelector('#lowPriority')
-        // const mediumPriorityElm = document.querySelector('#mediumPriority')
-        // const highPriorityElm = document.querySelector('#highPriority')
-        // const newTaskElm = document.querySelector('#newTask')
-        // const progressTaskElm = document.querySelector('#progressTask')
-        // const completeTaskElm = document.querySelector('#completeTask')
         const taskPriorityElm = document.querySelectorAll('#priorityGroup input')
         const taskStatusElm = document.querySelectorAll('#statusGroup input')
         const taslRangeELm = document.querySelector('#taskRange');
         const taskRnageShowFiled = document.querySelector('.taskrangefield');
         const form = document.querySelector('form')
-        
-        // const taskIdField = document.querySelector('#taskId')
-        // const taskTitleField = document.querySelector('#taskTitlefield')
-        // const taskPriorityField = document.querySelector('#taskPriority')
+
 
         return{
             taskTitle,
@@ -48,20 +42,15 @@ const all = {
             assignedTo,
             taskStartDate,
             taskEndDate,
-            // lowPriorityElm,
-            // mediumPriorityElm,
-            // highPriorityElm,
-            // newTaskElm,
-            // progressTaskElm,
-            // completeTaskElm,
-            taskPriorityElm,
             taskStatusElm,
+            taskPriorityElm,
             form,
             taslRangeELm,
             taskRnageShowFiled
         }
     },
 
+    // showing task form field range number
     taskRangeShow(){
         const {taskRnageShowFiled, taslRangeELm} = this.allSelectors()
         taskRnageShowFiled.value = taslRangeELm.value;
@@ -70,9 +59,12 @@ const all = {
         })
     },
 
+
+    // initializing all button
     initialize(){ 
         const {form} = this.allSelectors()
 
+        // submitting form
         form.addEventListener('submit', e => {
             e.preventDefault()
             const isError = this.validationField()
@@ -86,12 +78,13 @@ const all = {
 
                 this.dataInsertField(taskTitleValue,taskSubTitleValue,assignedToValue,taskStartDateValue,taskEndDateValue,priorityValue, taskStatusValue, taslRangeELmValue)
 
-                
+ 
 
             }
             
         })   
         
+        // loading dom content
         document.addEventListener('DOMContentLoaded', () => {
             
             if(localStorage.getItem('Task')){
@@ -122,6 +115,7 @@ const all = {
     
             const {taskTitle, taskSubTitle, assignedTo, taskStartDate, taskEndDate,taskPriorityElm,taskStatusElm, taslRangeELm} = this.allSelectors()
 
+            // edit button functionlity
             for(let i = 0; i < editBtn.length; i++){
                 editBtn[i].addEventListener('click', () => {
                     document.querySelector('#updateBtnElm').style.display = "inline-block"
@@ -142,6 +136,7 @@ const all = {
                 })
             }
 
+            // delete button functionality
             for(let i = 0; i < deleteBtn.length; i++){
                 deleteBtn[i].addEventListener('click', () => {
                     const allTaskId = document.querySelectorAll('#taskId')
@@ -149,6 +144,7 @@ const all = {
                 })
             }
 
+            // complete button functionality
             for(let i = 0; i < completeBtn.length; i++){
                 completeBtn[i].addEventListener('click', () => {
                     const allTaskId = document.querySelectorAll('#taskId')
@@ -158,34 +154,14 @@ const all = {
         })
     },
 
-    dataSendLocalStorage(taskArr){
-        // console.log(taskArr);
-
-            let localArr = []
-            
-
-            console.log(!localStorage.getItem('Task'));
-
-        // if(!localStorage.getItem('Task')){
-        //     console.log(true);
-        // }else{
-        //     console.log(false);
-        // }
-       
-        
 
 
-        
-    },
-
+    // inserting data into table or ui
     dataInsertField(taskTitleValue,taskSubTitleValue,assignedToValue,taskStartDateValue,taskEndDateValue,  priorityValue, taskStatusValue, taslRangeELmValue){
-
-        
 
         const tr = document.createElement('tr')
 
         const taskId = document.querySelectorAll('#taskId').length+1;
-
 
         tr.innerHTML = `
             <td id="taskId">${taskId}</td>
@@ -201,16 +177,18 @@ const all = {
         document.querySelector('table tbody').appendChild(tr)
          // ===================
 
-
         const deleteBtn = document.querySelectorAll('#deleteBtn');
         const editBtn = document.querySelectorAll('#editBtn');
         const completeBtn = document.querySelectorAll('#completeBtn')
 
+        this.dataStoreInObj(taskId, taskTitleValue, taskSubTitleValue,assignedToValue,taskStartDateValue,taskEndDateValue,  priorityValue, taskStatusValue, taslRangeELmValue)
+        
         return {deleteBtn, editBtn, completeBtn}
 
     },
 
    
+    // creating object by taking all task 
     dataStoreInObj(taskId,taskTitleValue,taskSubTitleValue,assignedToValue,taskStartDateValue,taskEndDateValue,  priorityValue, taskStatusValue, taslRangeELmValue){
         
         let dataObj = {
@@ -227,9 +205,13 @@ const all = {
         // console.log(dataObj);
         
         taskArr.push(dataObj)
+        console.log(taskArr);
+
+        localStorageInit.sendTaskLocalStorage(dataObj)
         
     },
 
+    // validating all the fields
     validationField(){
 
         const {taskTitleValue, taskSubTitleValue, assignedToValue,taskStartDateValue, taskEndDateValue} = this.storeAllValue()
@@ -245,6 +227,7 @@ const all = {
         return isError
     },
 
+    // storing all the value from ui
     storeAllValue(){
        
         const {taskTitle, taskSubTitle, assignedTo, taskStartDate, taskEndDate, taskPriorityElm,
@@ -259,6 +242,7 @@ const all = {
         let taskStatusValue = ''
         const taslRangeELmValue = taslRangeELm.value;
 
+        console.log(taskPriorityElm);
         for(let i = 0; i < taskPriorityElm.length; i++){
             if(taskPriorityElm[i].checked){
                 priorityValue = taskPriorityElm[i].value
